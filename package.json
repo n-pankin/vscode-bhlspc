@@ -1,7 +1,7 @@
 {
 	"name": "bhlspc",
 	"displayName": "bhlspc",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"publisher": "n.pankin",
 	"engines": {
 		"vscode": "^1.40.0"
@@ -17,18 +17,18 @@
 		"configuration": {
 			"title": "BHLSP",
 			"properties": {
-				"bhlspc.serverPath": {
+				"bhlspc.command": {
 					"type": "string",
 					"default": "",
-					"description": "The path to the location of lsp."
+					"description": ""
 				},
-				"bhlspc.folders": {
+				"bhlspc.args": {
 					"type": "array",
 					"items": {
 						"type": "string"
 					},
 					"default": [],
-					"description": "Specify the path to the folder containing the *.bhl files for the use"
+					"description": ""
 				}
 			}
 		}

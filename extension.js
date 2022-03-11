@@ -6,28 +6,27 @@ let client
 module.exports = {
   activate(context) {
     const config = vscode.workspace.getConfiguration('bhlspc');
-    const serverPath = config.inspect('serverPath').globalValue
-    const folders = config.inspect('folders').globalValue
+    const command = config.inspect('command').globalValue;
+    const args = config.inspect('args').globalValue;
 
     const executable = {
-      command: 'mono',
+      command: command,
       args: [
-        serverPath,
-        '-stdio'
+        'lsp'
       ]
     }
 
-    folders.forEach(function(item, index, array) {
-      executable.args.push("--root="+item)
+    args?.forEach(function(item, index, array) {
+      executable.args.push(item)
     })
-    
+
     const serverOptions = {
       run: executable,
       debug: executable,
     }
 
     const clientOptions = {
-      documentSelector: [{ pattern: '**/*.{bhl,meta}' }]
+      documentSelector: [{ pattern: '**/*.{bhl,meta,conf.js}' }]
     }
 
     client = new LanguageClient(

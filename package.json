@@ -19,7 +19,7 @@
 			"properties": {
 				"bhlspc.command": {
 					"type": "string",
-					"default": "",
+					"default": " ~/var/test/bhl/bhl",
 					"description": ""
 				},
 				"bhlspc.args": {
@@ -27,7 +27,7 @@
 					"items": {
 						"type": "string"
 					},
-					"default": [],
+					"default": ["lsp"],
 					"description": ""
 				}
 			}

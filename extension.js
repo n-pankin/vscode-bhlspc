@@ -6,20 +6,18 @@ let client
 module.exports = {
   activate(context) {
     const config = vscode.workspace.getConfiguration('bhlspc');
-    const command = config.inspect('command').globalValue;
-    const args = config.inspect('args').globalValue;
+    const command = config.get('command');
+    const args = config.get('args');
 
     const executable = {
       command: command,
-      args: [
-        'lsp'
-      ]
+      args: []
     }
 
     args?.forEach(function(item, index, array) {
       executable.args.push(item)
     })
-
+    
     const serverOptions = {
       run: executable,
       debug: executable,

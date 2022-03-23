@@ -7,13 +7,18 @@
 		"vscode": "^1.40.0"
 	},
 	"activationEvents": [
-		"*"
+		"onLanguage:bhl"
 	],
 	"main": "./extension.js",
 	"dependencies": {
 		"vscode-languageclient": "^7.0.0"
 	},
 	"contributes": {
+		"languages": [{
+			"id": "bhl",
+			"extensions": [ ".bhl" ],
+			"aliases": [ "bhl" ]
+		}],
 		"configuration": {
 			"title": "BHLSP",
 			"properties": {

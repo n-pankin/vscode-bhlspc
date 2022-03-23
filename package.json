@@ -27,10 +27,12 @@
 					"items": {
 						"type": "string"
 					},
-					"default": ["lsp"],
+					"default": [
+						"lsp"
+					],
 					"description": ""
 				}
 			}
 		}
-	}	
+	}
 }

@@ -1,41 +1,62 @@
 {
 	"name": "bhlspc",
-	"displayName": "bhlspc",
-	"version": "0.0.2",
+	"displayName": "VSCode part of a bhl LSP",
+	"version": "0.0.1",
 	"publisher": "n.pankin",
 	"engines": {
-		"vscode": "^1.40.0"
+		"vscode": "^1.75.0"
 	},
 	"activationEvents": [
 		"onLanguage:bhl"
 	],
-	"main": "./extension.js",
+	"main": "./out/extension.js",
 	"dependencies": {
-		"vscode-languageclient": "^7.0.0"
+		"vscode-languageclient": "^8.1.0"
+	},
+	"devDependencies": {
+		"@types/node": "^20.2.0",
+		"@types/vscode": "^1.75.1",
+		"@vscode/test-electron": "^2.2.3"
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -b",
+		"watch": "tsc -b -w",
+		"lint": "eslint ./src --ext .ts,.tsx"
 	},
 	"contributes": {
-		"languages": [{
-			"id": "bhl",
-			"extensions": [ ".bhl" ],
-			"aliases": [ "bhl" ]
-		}],
+		"languages": [
+			{
+				"id": "bhl",
+				"extensions": [
+					".bhl"
+				],
+				"aliases": [
+					"bhl"
+				]
+			}
+		],
 		"configuration": {
-			"title": "BHLSP",
+			"type": "object",
+			"title": "Server Configurations",
 			"properties": {
 				"bhlspc.command": {
-					"type": "string",
-					"default": " ~/var/test/bhl/bhl",
-					"description": ""
-				},
-				"bhlspc.args": {
 					"type": "array",
+					"order": 1,
 					"items": {
 						"type": "string"
 					},
 					"default": [
+						"path/to/bhl/bhl",
 						"lsp"
 					],
-					"description": ""
+					"description": "The command line required to run the server."
+				},
+				"bhlspc.selector": {
+					"type": "string",
+					"order": 2,
+					"default": "source.bhl",
+					"description": "This selector filters which views apply to this configuration."
 				}
 			}
 		}
